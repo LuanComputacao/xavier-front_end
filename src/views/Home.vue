@@ -1,18 +1,28 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <QuestionContainer :question="question"/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import QuestionContainer from '@/components/organisms/QuestionContainer.vue'
 
 export default {
   name: 'Home',
+  data: () => {
+    return {
+      question: {
+        wording: 'Questãozinha bonitinha',
+        items: [
+          { id: 1, text: 'Primeira Opção' },
+          { id: 2, text: 'Segunda Opção' }
+        ]
+      }
+    }
+  },
   components: {
-    HelloWorld
+    QuestionContainer
   }
 }
 </script>
