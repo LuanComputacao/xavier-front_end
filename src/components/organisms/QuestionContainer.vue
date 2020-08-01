@@ -1,6 +1,6 @@
 <template>
   <div class="question">
-     <QuestionWording
+    <QuestionWording
       :order="question.order"
       :wording="question.wording"
       :question_id="question_id"
@@ -20,8 +20,27 @@ import QuestionWording from '@/components/molecules/QuestionWording.vue'
 export default {
   name: 'QuestionContainer',
   props: {
-    question: Object,
-    question_id: String
+    question: {
+      type: Object,
+      required: true,
+      default: () => {
+        return {
+          order: 0,
+          type: 1,
+          wording: 'question wording',
+          items: [
+            { id: 1, text: 'First' },
+            { id: 2, text: 'Second' }
+          ]
+        }
+      }
+    },
+    question_id: {
+      type: String,
+      default: () => {
+        return '#$#'
+      }
+    }
   },
   components: {
     QuestionWording,

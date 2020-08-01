@@ -1,4 +1,9 @@
 const state = () => ({
+  types: {
+    OPEN: 1,
+    UNIQUE_CHOICE: 2,
+    MULTIPLE_CHOICE: 3
+  },
   all: {
     '001': {
       order: 1,

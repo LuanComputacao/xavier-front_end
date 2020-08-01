@@ -11,6 +11,17 @@ const routes = [
     component: Home
   },
   {
+    path: '/quiz-preview',
+    name: 'QuizPreview',
+    component: () => import('../views/QuizPreview.vue')
+  },
+  {
+    path: '/question-creator',
+    name: 'QuestionCreator',
+    component: () => import('../views/QuestionCreator.vue')
+  },
+
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting

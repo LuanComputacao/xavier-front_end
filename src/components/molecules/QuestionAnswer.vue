@@ -37,21 +37,18 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 export default {
   name: 'QuestionAnswer',
+
   props: {
     type: Number,
     question_items: Array,
     question_id: String
   },
+
   data: function () {
     return {
-      types: {
-        OPEN: 1,
-        UNIQUE_CHOICE: 2,
-        MULTIPLE_CHOICE: 3
-      },
       text: '',
       picked: 'null',
       question_choices_value: {}
@@ -64,6 +61,12 @@ export default {
         this.question_choices_value[e.id] = false
       })
     }
+  },
+
+  computed: {
+    ...mapState({
+      types: state => state.questions.types
+    })
   },
 
   methods: {
