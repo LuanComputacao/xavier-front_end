@@ -1,26 +1,26 @@
 <template>
   <div class="home">
-    <QuestionContainer :question="question"/>
+    <h1>Perguntas</h1>
+    <div v-for="(question, qId) in questions" :key="qId">
+      <QuestionContainer :question="question" :question_id="qId"/>
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import QuestionContainer from '@/components/organisms/QuestionContainer.vue'
+import { mapState } from 'vuex'
 
 export default {
   name: 'Home',
-  data: () => {
-    return {
-      question: {
-        wording: 'Questãozinha bonitinha',
-        items: [
-          { id: 1, text: 'Primeira Opção' },
-          { id: 2, text: 'Segunda Opção' }
-        ]
-      }
-    }
+  computed: {
+    ...mapState({
+      questions: state => state.questions.all,
+      answers: state => state.answers.all
+    })
   },
+
   components: {
     QuestionContainer
   }
