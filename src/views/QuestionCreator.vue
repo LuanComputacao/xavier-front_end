@@ -45,7 +45,7 @@
         <div v-if="questionsTypes.OPEN.code !== question_type">
           <h3>Opções</h3>
           <div v-for="(i, k) in amountOfOptionsComp" :key="k">
-            <input type="text">
+            <input :id="'question_option_' + i" type="text" v-model="items[i]">
           </div>
         </div>
       </form>
@@ -55,9 +55,7 @@
       <div>
         <h2>Preview de Quest&atilde;o</h2>
       </div>
-      <QuestionContainer
-        :question='question'
-      />
+      <QuestionContainer :question='question' />
     </div>
     <div>
     </div>
@@ -82,22 +80,25 @@ export default {
       items: [],
       question_id: '',
       question_type: 0,
-      amountOfOptions: 1
+      amountOfOptions: 2
     }
   },
 
   mounted () {
-    this.question_type = this.questionsTypes.OPEN.code
+    this.question_type = this.questionsTypes.UNIQUE_CHOICE.code
   },
 
   computed: {
+
     question () {
       return {
         order: 1,
         wording: this.wording,
-        type: this.question_type
+        type: this.question_type,
+        items: this.itemsComp
       }
     },
+
     amountOfOptionsComp () {
       const a = []
       for (let i = 1; i <= this.amountOfOptions; i++) {
@@ -105,6 +106,13 @@ export default {
       }
       return a
     },
+
+    itemsComp () {
+      return this.items.slice(1).map((i, j) => {
+        return { id: j + 1, text: i }
+      })
+    },
+
     ...mapState({
       questionsTypes: state => state.questions.types
     })
