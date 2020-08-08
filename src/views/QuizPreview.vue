@@ -3,8 +3,8 @@
     <h1>Quiz preview</h1>
     <div>
       <div v-for="(question, qId) in questions" :key="qId">
-      <QuestionContainer :question="question" :question_id="qId"/>
-    </div>
+        <QuestionContainer :question="question" :question_id="qId"/>
+      </div>
     </div>
   </div>
 </template>

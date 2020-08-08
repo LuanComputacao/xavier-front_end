@@ -1,8 +1,17 @@
 const state = () => ({
   types: {
-    OPEN: 1,
-    UNIQUE_CHOICE: 2,
-    MULTIPLE_CHOICE: 3
+    OPEN: {
+      code: 1,
+      label: 'Aberta'
+    },
+    UNIQUE_CHOICE: {
+      code: 2,
+      label: 'Unica escolha'
+    },
+    MULTIPLE_CHOICE: {
+      code: 3,
+      label: 'Multipla escolha'
+    }
   },
   all: {
     '001': {

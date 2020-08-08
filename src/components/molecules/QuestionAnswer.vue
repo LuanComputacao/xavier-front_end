@@ -1,13 +1,13 @@
 <template>
   <div class="question-answer">
     <textarea
-      v-if="type == types.OPEN"
+      v-if="type == types.OPEN.code"
       maxlength="512"
       @keyup="updateAnswer"
       v-model="text"
     >
     </textarea>
-    <div v-if="type == types.UNIQUE_CHOICE">
+    <div v-if="type == types.UNIQUE_CHOICE.code">
       <div v-for="(option, i) in question_items" :key="i">
         <input type="radio"
           :id="'question-option-' + i"
@@ -18,7 +18,7 @@
         <label for="one">{{option.text}}</label>
       </div>
     </div>
-    <div v-if="type == types.MULTIPLE_CHOICE">
+    <div v-if="type == types.MULTIPLE_CHOICE.code">
       <div v-for="(option, i) in question_items" :key="i">
         <label for="">
         <input
@@ -56,7 +56,7 @@ export default {
   },
 
   mounted () {
-    if (this.type === this.types.MULTIPLE_CHOICE) {
+    if (this.type === this.types.MULTIPLE_CHOICE.code) {
       this.question_items.forEach((e) => {
         this.question_choices_value[e.id] = false
       })
@@ -79,11 +79,11 @@ export default {
     },
 
     chooseAnswerByType () {
-      if (this.type === this.types.OPEN) {
+      if (this.type === this.types.OPEN.code) {
         return this.text
-      } else if (this.type === this.types.UNIQUE_CHOICE) {
+      } else if (this.type === this.types.UNIQUE_CHOICE.code) {
         return this.picked
-      } else if (this.type === this.types.MULTIPLE_CHOICE) {
+      } else if (this.type === this.types.MULTIPLE_CHOICE.code) {
         return this.question_choices_value
       }
     },
