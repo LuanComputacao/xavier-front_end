@@ -5,49 +5,13 @@
       <div>
         <h2>Formul&aacute;rio</h2>
       </div>
+      <div style="border: solid 1px">
+        <QuestionContainerForm/>
+      </div>
+      <div>
+
+      </div>
       <form action="" method="POST">
-        <hr/>
-        <div>
-          <label for="js-question-wording">Enunciado da questão</label><br/>
-          <textarea
-            name="question-wording"
-            id="js-question-wording"
-            rows="10"
-            placeholder="Coloque aqui o enunciado"
-            v-model="wording"
-          >
-          </textarea>
-        </div>
-        <hr/>
-        <div>
-          <div>Qual o tipo da questão?</div>
-          <div v-for="(type, i) in questionsTypes" :key="i">
-            <input type="radio"
-              :id="'question-type-' + i"
-              :value="type.code"
-              v-model="question_type"
-              >
-            <label :for="'question-type-' + i">{{type.label}}</label>
-          </div>
-        </div>
-        <div v-if="questionsTypes.OPEN.code !== question_type">
-          <hr/>
-          <label for="question-number-of-option">Número de opções da questão: </label>
-          <input
-            v-model="amountOfOptions"
-            id="question-number-of-option"
-            type="number"
-            value="2"
-            max="5"
-            min="2">
-        </div>
-        <hr/>
-        <div v-if="questionsTypes.OPEN.code !== question_type">
-          <h3>Opções</h3>
-          <div v-for="(i, k) in amountOfOptionsComp" :key="k">
-            <input :id="'question_option_' + i" type="text" v-model="items[i]">
-          </div>
-        </div>
       </form>
     </div>
     <hr/><hr/>
@@ -65,11 +29,13 @@
 <script>
 import { mapState } from 'vuex'
 import QuestionContainer from '../components/organisms/QuestionContainer'
+import QuestionContainerForm from '../components/organisms/QuestionContainerForm'
 export default {
   name: 'QuestionCreator',
 
   components: {
-    QuestionContainer
+    QuestionContainer,
+    QuestionContainerForm
   },
 
   data: function () {
