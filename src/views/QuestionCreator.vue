@@ -1,28 +1,27 @@
 <template>
   <div>
-
     <div>
       <div>
         <h2>Formul&aacute;rio</h2>
       </div>
       <div style="border: solid 1px">
-        <QuestionContainerForm/>
+        <QuestionContainerForm />
       </div>
-      <div>
-
-      </div>
-      <form action="" method="POST">
-      </form>
+      <div></div>
+      <form
+        action
+        method="POST"
+      ></form>
     </div>
-    <hr/><hr/>
+    <hr />
+    <hr />
     <div>
       <div>
         <h2>Preview de Quest&atilde;o</h2>
       </div>
-      <QuestionContainer :question='question' />
+      <QuestionContainer :question="question" />
     </div>
-    <div>
-    </div>
+    <div></div>
   </div>
 </template>
 
@@ -40,6 +39,7 @@ export default {
 
   data: function () {
     return {
+      orde: 0,
       order: 0,
       type: 0,
       wording: '',
@@ -55,7 +55,6 @@ export default {
   },
 
   computed: {
-
     question () {
       return {
         order: 1,
@@ -80,12 +79,11 @@ export default {
     },
 
     ...mapState({
-      questionsTypes: state => state.questions.types
+      questionsTypes: (state) => state.questions.types
     })
   }
 }
 </script>
 
 <style>
-
 </style>

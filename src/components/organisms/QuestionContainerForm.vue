@@ -1,6 +1,6 @@
 <template>
   <div>
-    <QuestionWordingForm @update-wording="updateWording"/>
+    <QuestionWordingForm @update-wording="updateWording" />
 
     <QuestionAnswerTypeForm
       :types="questionsTypes"
@@ -66,5 +66,4 @@ export default {
 </script>
 
 <style>
-
 </style>
