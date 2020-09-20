@@ -19,7 +19,7 @@
       <div>
         <h2>Preview de Quest&atilde;o</h2>
       </div>
-      <QuestionContainer :question="question" />
+      <QuestionContainer :question="editingQuestion" />
     </div>
     <div></div>
   </div>
@@ -79,7 +79,8 @@ export default {
     },
 
     ...mapState({
-      questionsTypes: (state) => state.questions.types
+      questionsTypes: (state) => state.questions.types,
+      editingQuestion: state => state.questions.editingQuestion
     })
   }
 }

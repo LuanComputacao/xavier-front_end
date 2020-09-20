@@ -17,7 +17,7 @@
 
 <script>
 import QuestionContainer from '@/components/organisms/QuestionContainer.vue'
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'QuizPreview',
@@ -31,8 +31,19 @@ export default {
       questions: state => state.questions.all,
       answers: state => state.answers.all
     })
+  },
+
+  created () {
+    this.getAllQuestions()
+  },
+
+  methods: {
+    ...mapActions('questions', [
+      'getAllQuestions'
+    ])
   }
 }
+
 </script>
 
 <style>

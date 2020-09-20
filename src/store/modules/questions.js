@@ -1,3 +1,5 @@
+import questionsBase from '../../api/questions'
+
 const state = () => ({
   types: {
     OPEN: {
@@ -43,14 +45,36 @@ const state = () => ({
       type: 3,
       answer: {}
     }
+  },
+  editingQuestion: {
+    items: null,
+    type: null,
+    wording: ''
   }
 })
 
 const getters = {}
 
-const actions = {}
+const actions = {
+  updateEditingQuestion (context, question) {
+    context.commit('updateEditingQuestion', question)
+  },
 
-const mutations = {}
+  getAllQuestions ({ commit }) {
+    questionsBase.getQuestions(questions => {
+      commit('setQuestions', questions)
+    })
+  }
+}
+
+const mutations = {
+  updateEditingQuestion (_state, question) {
+    _state.editingQuestion = question
+  },
+  setQuestions (_state, questions) {
+    _state.all = questions
+  }
+}
 
 export default {
   namespaced: true,
