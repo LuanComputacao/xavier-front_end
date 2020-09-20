@@ -10,6 +10,7 @@
     <QuestionAnswerForm
       :types="questionsTypes"
       :selectedType="type"
+      @update-items="updateItems"
     />
   </div>
 </template>
@@ -34,8 +35,6 @@ export default {
       type: null,
       wording: '',
       items: [],
-      question_id: '',
-      question_type: 0,
       amountOfOptions: 2
     }
   },
@@ -50,6 +49,11 @@ export default {
     updateWording (wording) {
       this.wording = wording
     },
+
+    updateItems (items) {
+      this.items = items
+    },
+
     updateType (type) {
       type = Number.parseInt(type)
       const typeNames = Object.getOwnPropertyNames(this.questionsTypes)

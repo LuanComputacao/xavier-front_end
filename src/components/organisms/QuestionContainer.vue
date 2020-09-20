@@ -18,6 +18,10 @@ import QuestionAnswer from '@/components/molecules/QuestionAnswer.vue'
 import QuestionWording from '@/components/molecules/QuestionWording.vue'
 
 export default {
+  data () {
+    return {
+    }
+  },
   name: 'QuestionContainer',
   props: {
     question: {
